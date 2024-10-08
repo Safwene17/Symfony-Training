@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des articles{% endblock %}
+{% block body %}
+{% if articles %}
+<table id="articles" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prix</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for article in articles %}
+        <tr>
+            <td>{{ article.nom }}</td>
+            <td>{{ article.prix }}</td>
+
+            <td>
+                <a href="/article/{{ article.id }}" class="btn btn-dark">Détails</a>
+                <a href="/article/edit/{{ article.id }}" class="btn btn-dark">Modifier</a>
+                <form action="{{ path('delete_article', { id: article.id }) }}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </form>
+
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p> Aucun articles </p>
+{% endif %}
+{% endblock %}
