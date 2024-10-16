@@ -7,6 +7,7 @@
         <tr>
             <th>Nom</th>
             <th>Prix</th>
+            <th>Category</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -15,6 +16,7 @@
         <tr>
             <td>{{ article.nom }}</td>
             <td>{{ article.prix }}</td>
+            <td>{{ article.category.titre }}</td>
 
             <td>
                 <a href="/article/{{ article.id }}" class="btn btn-dark">Détails</a>
